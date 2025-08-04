@@ -12,3 +12,5 @@
 # 4. Uncomment the line (remove the # at the beginning)
 # 5. Deploy to production
 # 6. Verify the file is accessible at https://briefutils.com/ads.txt
+
+google.com, pub-2701468620398349, DIRECT, f08c47fec0942fa0
