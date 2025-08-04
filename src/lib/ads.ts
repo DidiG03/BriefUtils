@@ -29,7 +29,7 @@ export const AD_SLOTS = {
 
 // Ad configuration
 export const AD_CONFIG = {
-  PUBLISHER_ID: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-XXXXXXXXXXXXXXXXX',
+  PUBLISHER_ID: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-2701468620398349',
   ENABLED: process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_SHOW_ADS === 'true',
   AUTO_ADS: process.env.NEXT_PUBLIC_ENABLE_AUTO_ADS !== 'false',
 } as const;
