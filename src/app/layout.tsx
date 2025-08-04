@@ -51,12 +51,18 @@ export default function RootLayout({
             {AD_CONFIG.AUTO_ADS && (
               <Script id="adsense-auto-ads" strategy="afterInteractive">
                 {`
-                  if (typeof window !== 'undefined' && !window.adsbygoogle_init) {
-                    window.adsbygoogle_init = true;
-                    (adsbygoogle = window.adsbygoogle || []).push({
-                      google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
-                      enable_page_level_ads: true
-                    });
+                  if (typeof window !== 'undefined') {
+                    // Prevent duplicate auto ads initialization
+                    if (!window.adsbygoogle_initialized) {
+                      window.adsbygoogle_initialized = true;
+                      // Ensure adsbygoogle array exists
+                      window.adsbygoogle = window.adsbygoogle || [];
+                      // Only push auto ads config once
+                      window.adsbygoogle.push({
+                        google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
+                        enable_page_level_ads: true
+                      });
+                    }
                   }
                 `}
               </Script>
