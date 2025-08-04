@@ -27,9 +27,9 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Tiny
+              Brief
             </span>
-            <span className="text-gray-900 dark:text-white">Tools</span>
+            <span className="text-gray-900 dark:text-white">Utils</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up">
