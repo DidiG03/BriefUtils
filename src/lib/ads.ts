@@ -49,7 +49,7 @@ export const shouldShowAds = (): boolean => {
   if (typeof window === 'undefined') return false;
   
   // Don't show ads in development unless explicitly enabled
-  if (process.env.NODE_ENV === 'development' && !process.env.NEXT_PUBLIC_SHOW_ADS) {
+  if (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_SHOW_ADS !== 'true') {
     return false;
   }
   

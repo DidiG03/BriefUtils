@@ -44,18 +44,20 @@ export default function RootLayout({
         {AD_CONFIG.ENABLED && (
           <>
             <Script
-              async
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.PUBLISHER_ID}`}
+              strategy="beforeInteractive"
               crossOrigin="anonymous"
-              strategy="afterInteractive"
             />
             {AD_CONFIG.AUTO_ADS && (
               <Script id="adsense-auto-ads" strategy="afterInteractive">
                 {`
-                  (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
-                    enable_page_level_ads: true
-                  });
+                  if (typeof window !== 'undefined' && !window.adsbygoogle_init) {
+                    window.adsbygoogle_init = true;
+                    (adsbygoogle = window.adsbygoogle || []).push({
+                      google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
+                      enable_page_level_ads: true
+                    });
+                  }
                 `}
               </Script>
             )}
