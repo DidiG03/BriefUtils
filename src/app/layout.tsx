@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   creator: "BriefUtils",
   publisher: "BriefUtils",
   robots: "index, follow",
+  other: {
+    "google-adsense-account": "ca-pub-2701468620398349",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
