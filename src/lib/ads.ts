@@ -29,7 +29,7 @@ export const AD_SLOTS = {
 
 // Ad configuration
 export const AD_CONFIG = {
-  PUBLISHER_ID: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-2701468620398349',
+  PUBLISHER_ID: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || '',
   ENABLED: process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_SHOW_ADS === 'true',
   AUTO_ADS: (process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_SHOW_ADS === 'true') && process.env.NEXT_PUBLIC_ENABLE_AUTO_ADS !== 'false',
 } as const;
@@ -47,6 +47,11 @@ export const AD_SIZES = {
 // Check if ads should be displayed
 export const shouldShowAds = (): boolean => {
   if (typeof window === 'undefined') return false;
+  
+  // Don't show ads if no publisher ID is set
+  if (!AD_CONFIG.PUBLISHER_ID) {
+    return false;
+  }
   
   // Don't show ads in development unless explicitly enabled
   if (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_SHOW_ADS !== 'true') {

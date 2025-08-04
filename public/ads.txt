@@ -1,0 +1,14 @@
+# ads.txt file for Google AdSense verification
+# Replace the publisher ID below with your actual AdSense publisher ID
+# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Example (replace with your actual publisher ID):
+# google.com, pub-2701468620398349, DIRECT, f08c47fec0942fa0
+
+# Instructions:
+# 1. Get your publisher ID from Google AdSense dashboard (format: ca-pub-XXXXXXXXXXXXXXXX)
+# 2. Remove the "ca-" prefix, so ca-pub-2701468620398349 becomes pub-2701468620398349
+# 3. Replace the example line above with: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# 4. Uncomment the line (remove the # at the beginning)
+# 5. Deploy to production
+# 6. Verify the file is accessible at https://briefutils.com/ads.txt

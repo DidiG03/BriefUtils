@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   publisher: "BriefUtils",
   robots: "index, follow",
   other: {
-    "google-adsense-account": "ca-pub-2701468620398349",
+    "google-adsense-account": AD_CONFIG.PUBLISHER_ID,
   },
   openGraph: {
     type: "website",
@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         {/* Google AdSense */}
-        {AD_CONFIG.ENABLED && (
+        {AD_CONFIG.ENABLED && AD_CONFIG.PUBLISHER_ID && (
           <>
             <Script
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.PUBLISHER_ID}`}
