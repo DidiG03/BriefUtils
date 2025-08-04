@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://briefutils.com/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 1
+
+# Allow all search engines to crawl all pages
+Disallow:
