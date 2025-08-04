@@ -32,6 +32,7 @@ export const AD_CONFIG = {
   PUBLISHER_ID: process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || '',
   ENABLED: process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_SHOW_ADS === 'true',
   AUTO_ADS: (process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_SHOW_ADS === 'true') && process.env.NEXT_PUBLIC_ENABLE_AUTO_ADS !== 'false',
+  USE_MANUAL_ADS: process.env.NEXT_PUBLIC_USE_MANUAL_ADS === 'true',
 } as const;
 
 // Ad sizes for different placements

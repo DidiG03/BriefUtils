@@ -54,19 +54,33 @@ export default function RootLayout({
             {AD_CONFIG.AUTO_ADS && (
               <Script id="adsense-auto-ads" strategy="afterInteractive">
                 {`
-                  if (typeof window !== 'undefined') {
+                  (function() {
+                    if (typeof window === 'undefined') return;
+                    
                     // Prevent duplicate auto ads initialization
-                    if (!window.adsbygoogle_initialized) {
-                      window.adsbygoogle_initialized = true;
-                      // Ensure adsbygoogle array exists
-                      window.adsbygoogle = window.adsbygoogle || [];
-                      // Only push auto ads config once
-                      window.adsbygoogle.push({
-                        google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
-                        enable_page_level_ads: true
-                      });
+                    if (window.adsbygoogle_auto_ads_initialized) return;
+                    window.adsbygoogle_auto_ads_initialized = true;
+                    
+                    // Wait for adsbygoogle to be available
+                    function initAutoAds() {
+                      if (window.adsbygoogle) {
+                        try {
+                          window.adsbygoogle = window.adsbygoogle || [];
+                          window.adsbygoogle.push({
+                            google_ad_client: "${AD_CONFIG.PUBLISHER_ID}",
+                            enable_page_level_ads: true
+                          });
+                        } catch (e) {
+                          console.warn('Auto ads already initialized');
+                        }
+                      } else {
+                        // Retry if adsbygoogle is not ready
+                        setTimeout(initAutoAds, 100);
+                      }
                     }
-                  }
+                    
+                    initAutoAds();
+                  })();
                 `}
               </Script>
             )}

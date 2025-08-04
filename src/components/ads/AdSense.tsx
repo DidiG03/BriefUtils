@@ -21,15 +21,29 @@ export default function AdSense({
   useEffect(() => {
     if (!shouldShowAds()) return;
     
-    try {
-      // Check if AdSense script is loaded
-      if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-        trackAdInteraction(adSlot, 'loaded');
+    const initAd = () => {
+      try {
+        // Check if AdSense script is loaded
+        if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+          // Only push if auto ads are disabled or manual ads are explicitly enabled
+          if (!AD_CONFIG.AUTO_ADS || AD_CONFIG.USE_MANUAL_ADS) {
+            ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+            trackAdInteraction(adSlot, 'loaded');
+          } else {
+            // For auto ads, just track the ad slot
+            trackAdInteraction(adSlot, 'auto_ad_slot');
+          }
+        } else {
+          // Retry if script not loaded yet
+          setTimeout(initAd, 100);
+        }
+      } catch (err) {
+        console.error('AdSense error:', err);
       }
-    } catch (err) {
-      console.error('AdSense error:', err);
-    }
+    };
+    
+    // Delay initialization to avoid conflicts
+    setTimeout(initAd, 50);
   }, [adSlot]);
 
   // Don't render ads if disabled
