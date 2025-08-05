@@ -32,7 +32,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com/briefutils"
+                href="https://github.com/DidiG03/BriefUtils"
                 className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
                 aria-label="GitHub"
               >
