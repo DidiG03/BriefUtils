@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         {/* Google AdSense */}
-        {AD_CONFIG.ENABLED && AD_CONFIG.PUBLISHER_ID && (
+        {AD_CONFIG.ENABLED && AD_CONFIG.PUBLISHER_ID && process.env.NODE_ENV === 'production' && (
           <>
             <Script
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CONFIG.PUBLISHER_ID}`}
@@ -76,13 +76,6 @@ export default function RootLayout({
                       }
                       signalGooglefcPresent();
                     })();
-                  `}
-                </Script>
-                
-                {/* Error Protection Message */}
-                <Script id="ad-error-protection" strategy="beforeInteractive">
-                  {`
-                    (function(){'use strict';function aa(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}var ba=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a}; function ca(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global]; for(var b=0;b<a.length;++b){var c=a[b];if(c&&c.Math==Math)return c}throw Error("Cannot find global object");}var da=ca(this);
                   `}
                 </Script>
               </>

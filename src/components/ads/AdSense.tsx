@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AD_CONFIG, shouldShowAds, trackAdInteraction } from '@/lib/ads';
 
 interface AdSenseProps {
@@ -18,8 +18,17 @@ export default function AdSense({
   className = '',
   responsive = true 
 }: AdSenseProps) {
+  const [isClient, setIsClient] = useState(false);
+  const [showAds, setShowAds] = useState(false);
+
   useEffect(() => {
-    if (!shouldShowAds()) return;
+    // Set client-side state after hydration
+    setIsClient(true);
+    setShowAds(shouldShowAds());
+  }, []);
+
+  useEffect(() => {
+    if (!isClient || !showAds) return;
     
     const initAd = () => {
       try {
@@ -44,14 +53,14 @@ export default function AdSense({
     
     // Delay initialization to avoid conflicts
     setTimeout(initAd, 50);
-  }, [adSlot]);
+  }, [adSlot, isClient, showAds]);
 
-  // Don't render ads if disabled
-  if (!shouldShowAds()) {
+  // Always render placeholder during SSR and when ads are disabled
+  if (!isClient || !showAds) {
     return (
       <div className={`adsense-placeholder ${className}`} style={style}>
         <div className="bg-gray-100 dark:bg-gray-700 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 text-sm p-4">
-          Ad Placeholder ({adSlot})
+          {!isClient ? 'Loading...' : `Ad Placeholder (${adSlot})`}
         </div>
       </div>
     );

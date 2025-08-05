@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ToolCard from '@/components/ToolCard';
+import BlogPreview from '@/components/BlogPreview';
 import { tools, searchTools, getFeaturedTools } from '@/data/tools';
 import AdBanner from '@/components/ads/AdBanner';
 import { AD_SLOTS } from '@/lib/ads';
@@ -178,6 +179,13 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <BlogPreview maxPosts={2} />
         </div>
       </section>
 

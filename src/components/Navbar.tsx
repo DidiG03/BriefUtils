@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { MagnifyingGlassIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { ThemeToggle } from './ThemeToggle';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +36,12 @@ export default function Navbar() {
               All Tools
             </Link>
             <Link
+              href="/blog"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+            >
+              Blog
+            </Link>
+            <Link
               href="/about"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
             >
@@ -45,9 +50,7 @@ export default function Navbar() {
           </div>
 
           {/* Right side */}
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            
+          <div className="flex items-center">
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -79,6 +82,13 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               >
                 All Tools
+              </Link>
+              <Link
+                href="/blog"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
               </Link>
               <Link
                 href="/about"
