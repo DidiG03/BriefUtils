@@ -5,6 +5,7 @@ import { DocumentTextIcon, ClipboardDocumentIcon } from '@heroicons/react/24/out
 import AdBanner from '@/components/ads/AdBanner';
 import AdSidebar from '@/components/ads/AdSidebar';
 import { AD_SLOTS } from '@/lib/ads';
+import Script from 'next/script';
 
 interface TextStats {
   characters: number;
@@ -83,7 +84,65 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
     setText(sampleText);
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word Counter",
+    "description": "Free online word counter tool. Count words, characters, sentences, and paragraphs. Perfect for writers, students, and content creators.",
+    "url": "https://briefutils.com/word-counter",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser",
+    "permissions": "No permissions required",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Count words and characters",
+      "Real-time text analysis",
+      "Reading time estimation",
+      "Text density metrics",
+      "Privacy-focused - no data stored"
+    ],
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is the word count?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our word counter is extremely accurate and follows industry-standard counting methods. It splits text by whitespace and filters empty strings, which matches how most word processors count words."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is reading time calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reading time is based on an average reading speed of 200 words per minute, which is the standard for adult readers. This gives you a realistic estimate for presentations, articles, and speeches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text stored or saved anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, your text is never stored or transmitted. All counting happens locally in your browser, ensuring complete privacy and security of your content."
+          }
+        }
+      ]
+    }
+  };
+
   return (
+    <>
+      <Script
+        id="word-counter-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -283,6 +342,356 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
                 </p>
               </div>
             </div>
+
+            {/* Comprehensive Content Section */}
+            <div className="mt-16 space-y-12">
+              {/* How to Use */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  How to Use the Word Counter Tool
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <ol className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">1</span>
+                        <div>
+                          <strong>Paste or Type Your Text:</strong> Enter your content in the large text area. You can paste from any document or type directly.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">2</span>
+                        <div>
+                          <strong>View Real-time Statistics:</strong> Watch as the word count, character count, and other metrics update instantly as you type.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">3</span>
+                        <div>
+                          <strong>Analyze Your Text:</strong> Review detailed statistics including reading time, text density, and paragraph structure.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">4</span>
+                        <div>
+                          <strong>Export Statistics:</strong> Copy the results to your clipboard for use in reports, assignments, or documentation.
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                      💡 Pro Tips for Writers
+                    </h3>
+                    <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                      <li>• Use 200-250 words per minute for reading time estimates</li>
+                      <li>• Average sentence length should be 15-20 words for readability</li>
+                      <li>• Academic papers typically require specific word counts</li>
+                      <li>• Social media posts have character limits (Twitter: 280 chars)</li>
+                      <li>• Blog posts perform well at 1,500-2,500 words</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* Use Cases */}
+              <section className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Who Uses Word Counter Tools?
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">📚</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Students</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Essay word count requirements</li>
+                      <li>• Research paper length tracking</li>
+                      <li>• Assignment submission guidelines</li>
+                      <li>• Academic writing analysis</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">✍️</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Writers & Authors</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Novel and book chapter tracking</li>
+                      <li>• Article length optimization</li>
+                      <li>• Publishing word count requirements</li>
+                      <li>• Writing progress monitoring</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">📈</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Content Marketers</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Blog post optimization</li>
+                      <li>• SEO content planning</li>
+                      <li>• Social media character limits</li>
+                      <li>• Email campaign copy length</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">💼</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Professionals</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Business proposal writing</li>
+                      <li>• Report length specifications</li>
+                      <li>• Documentation standards</li>
+                      <li>• Presentation script timing</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">🎓</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Educators</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Creating assignment guidelines</li>
+                      <li>• Lesson plan development</li>
+                      <li>• Educational content creation</li>
+                      <li>• Student work evaluation</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-6">
+                    <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">🗞️</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">Journalists</h3>
+                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+                      <li>• Article length requirements</li>
+                      <li>• News story optimization</li>
+                      <li>• Editorial guidelines</li>
+                      <li>• Publication deadlines</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* FAQ Section */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Frequently Asked Questions
+                </h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      How accurate is the word count?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Our word counter is extremely accurate and follows industry-standard counting methods. It splits text by whitespace and filters empty strings, which matches how most word processors count words.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      What's the difference between characters and characters without spaces?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      "Characters" includes all letters, numbers, punctuation, and spaces. "Characters without spaces" excludes spaces but counts everything else. This is useful for platforms with different character limits.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      How is reading time calculated?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Reading time is based on an average reading speed of 200 words per minute, which is the standard for adult readers. This gives you a realistic estimate for presentations, articles, and speeches.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Can I use this for academic papers?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Absolutely! Our word counter is perfect for academic writing, including essays, research papers, and dissertations. It provides the same counting method used by most word processors.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Is my text stored or saved anywhere?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      No, your text is never stored or transmitted. All counting happens locally in your browser, ensuring complete privacy and security of your content.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      What file formats can I paste from?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      You can paste text from any application - Microsoft Word, Google Docs, plain text files, web pages, and more. The tool will automatically handle the text formatting.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Text Analysis Guide */}
+              <section className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Understanding Text Analysis Metrics
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">📊 Word Count</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        The total number of words in your text. Essential for meeting writing requirements and optimizing content length for different platforms.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">🔤 Character Count</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        Includes all letters, numbers, punctuation, and spaces. Important for social media posts, meta descriptions, and character-limited platforms.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">📝 Sentence Count</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        Number of sentences in your text. Helps analyze readability and writing complexity. Ideal sentence length is 15-20 words.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">📄 Paragraph Count</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        Number of paragraphs in your text. Important for document structure and readability. Online content benefits from shorter paragraphs.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">⏱️ Reading Time</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        Estimated time to read your text at 200 words per minute. Useful for blog posts, speeches, and presentations.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">📊 Text Density</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
+                        Average words per sentence and sentences per paragraph. Helps optimize readability and engagement.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Writing Guidelines */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Word Count Guidelines by Content Type
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full table-auto">
+                    <thead>
+                      <tr className="border-b border-gray-200 dark:border-gray-700">
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">Content Type</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">Ideal Word Count</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">Character Limit</th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">Purpose</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Twitter Post</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">15-50 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">280 characters</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Social engagement</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Blog Post</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">1,500-2,500 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">No limit</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">SEO & education</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Academic Essay</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">500-1,500 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Varies</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Academic assessment</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Meta Description</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">20-30 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">155 characters</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">SEO optimization</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Email Subject</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">6-10 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">50 characters</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Email marketing</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-3 text-sm text-gray-900 dark:text-white font-medium">Press Release</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">400-800 words</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">No limit</td>
+                        <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Media coverage</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              {/* Related Tools */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Related Text Analysis Tools
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <a href="/json-formatter" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">📋</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">JSON Formatter</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Format and validate JSON data</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/qr-generator" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">📱</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">QR Code Generator</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Generate QR codes for text</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/png-to-jpeg" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🖼️</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">PNG to JPEG</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Convert image formats</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/age-calculator" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🎂</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">Age Calculator</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Calculate precise age</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/tools" className="block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🔧</span>
+                      <div>
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-100">View All Tools</h3>
+                        <p className="text-sm text-blue-700 dark:text-blue-300">Explore our complete toolkit</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </section>
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -295,5 +704,6 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
         <AdBanner slot={AD_SLOTS.TOOL_BOTTOM_BANNER} size="large" className="mt-12" />
       </div>
     </div>
+    </>
   );
 }

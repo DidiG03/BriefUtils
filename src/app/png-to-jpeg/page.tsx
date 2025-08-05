@@ -5,6 +5,7 @@ import { ArrowDownTrayIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import AdBanner from '@/components/ads/AdBanner';
 import AdSidebar from '@/components/ads/AdSidebar';
 import { AD_SLOTS } from '@/lib/ads';
+import Script from 'next/script';
 
 export default function PngToJpegConverter() {
   const [dragActive, setDragActive] = useState(false);
@@ -94,7 +95,65 @@ export default function PngToJpegConverter() {
     }
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PNG to JPEG Converter",
+    "description": "Free online PNG to JPEG converter. Reduce file size while maintaining quality. Convert PNG images to JPEG format instantly in your browser.",
+    "url": "https://briefutils.com/png-to-jpeg",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "permissions": "No permissions required",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Convert PNG to JPEG",
+      "Adjustable quality settings",
+      "Privacy-focused - no uploads",
+      "Works offline",
+      "Universal compatibility"
+    ],
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will I lose quality when converting PNG to JPEG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, JPEG uses lossy compression, but the quality loss is minimal at high quality settings (85-95%). For photographs, the difference is barely noticeable while achieving significant file size reduction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to transparency in PNG files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JPEG doesn't support transparency. Our converter automatically adds a white background to replace transparent areas, ensuring your image displays correctly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to convert images online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our converter processes everything locally in your browser. Your images never leave your device, ensuring complete privacy and security."
+          }
+        }
+      ]
+    }
+  };
+
   return (
+    <>
+      <Script
+        id="png-to-jpeg-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -294,5 +353,6 @@ export default function PngToJpegConverter() {
     <AdBanner slot={AD_SLOTS.TOOL_BOTTOM_BANNER} size="large" className="mt-12" />
   </div>
 </div>
+</>
 );
 }

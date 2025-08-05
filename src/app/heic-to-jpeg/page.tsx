@@ -5,6 +5,7 @@ import { ArrowDownTrayIcon, PhotoIcon, ExclamationTriangleIcon } from '@heroicon
 import AdBanner from '@/components/ads/AdBanner';
 import AdSidebar from '@/components/ads/AdSidebar';
 import { AD_SLOTS } from '@/lib/ads';
+import Script from 'next/script';
 
 export default function HeicToJpegConverter() {
   const [dragActive, setDragActive] = useState(false);
@@ -99,7 +100,13 @@ export default function HeicToJpegConverter() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <>
+      <Script
+        id="heic-to-jpeg-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -288,31 +295,257 @@ export default function HeicToJpegConverter() {
               )}
             </div>
 
-            {/* Info Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  About HEIC Format
-                </h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li>• Apple's default photo format since iOS 11</li>
-                  <li>• Better compression than JPEG</li>
-                  <li>• Limited compatibility outside Apple devices</li>
-                  <li>• Converting to JPEG ensures universal support</li>
-                </ul>
+            {/* Comprehensive Content Section */}
+            <div className="space-y-12">
+              {/* How It Works */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  How to Convert HEIC to JPEG: Step-by-Step Guide
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <ol className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">1</span>
+                        <div>
+                          <strong>Upload Your HEIC File:</strong> Click the upload area or drag and drop your HEIC/HEIF image files directly into the converter.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">2</span>
+                        <div>
+                          <strong>Adjust Quality (Optional):</strong> Use the quality slider to balance file size vs. image quality. 90% quality is recommended for most uses.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">3</span>
+                        <div>
+                          <strong>Convert Instantly:</strong> Click convert and watch your HEIC image transform to JPEG format in seconds.
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">4</span>
+                        <div>
+                          <strong>Download Your JPEG:</strong> Save the converted JPEG file to your device - ready to share anywhere!
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                      💡 Pro Tips for Best Results
+                    </h3>
+                    <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                      <li>• Keep quality at 85-95% for optimal file size vs. quality balance</li>
+                      <li>• Batch convert multiple photos for efficiency</li>
+                      <li>• Original photos remain unchanged on your device</li>
+                      <li>• Works with both HEIC and HEIF formats</li>
+                      <li>• No internet connection required after page loads</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* Why Convert Section */}
+              <section className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Why Convert HEIC to JPEG?
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">🌐</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Universal Compatibility</h3>
+                    <p className="text-gray-600 dark:text-gray-400">JPEG works on all devices, browsers, and platforms. Share photos without compatibility issues.</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Faster Sharing</h3>
+                    <p className="text-gray-600 dark:text-gray-400">Upload and share images faster across social media, email, and messaging apps.</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl">💼</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional Use</h3>
+                    <p className="text-gray-600 dark:text-gray-400">Required for many professional applications, websites, and printing services.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Technical Info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    📱 About HEIC Format
+                  </h3>
+                  <div className="space-y-3 text-gray-600 dark:text-gray-400">
+                    <p><strong>HEIC (High Efficiency Image Container)</strong> is Apple's modern image format introduced with iOS 11 in 2017.</p>
+                    <ul className="space-y-1 ml-4">
+                      <li>• 50% smaller file sizes than JPEG</li>
+                      <li>• Better image quality at same file size</li>
+                      <li>• Supports transparency and 16-bit color</li>
+                      <li>• Can store multiple images (Live Photos)</li>
+                      <li>• Default format for iPhone cameras</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    🔒 Privacy & Security
+                  </h3>
+                  <div className="space-y-3 text-gray-600 dark:text-gray-400">
+                    <p><strong>Your photos stay private.</strong> Our converter works entirely in your browser.</p>
+                    <ul className="space-y-1 ml-4">
+                      <li>• No files uploaded to servers</li>
+                      <li>• Processing happens locally</li>
+                      <li>• Original images remain untouched</li>
+                      <li>• No registration or account required</li>
+                      <li>• Works offline after loading</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Implementation Notes
-                </h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                  <li>• Requires heic2any or similar library</li>
-                  <li>• Processing happens in your browser</li>
-                  <li>• No server upload required</li>
-                  <li>• Maintains image quality and metadata</li>
-                </ul>
-              </div>
+              {/* FAQ Section */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Frequently Asked Questions
+                </h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Is it safe to convert HEIC to JPEG online?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Yes! Our converter processes everything locally in your browser. Your images never leave your device, ensuring complete privacy and security.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Will I lose image quality when converting HEIC to JPEG?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Minimal quality loss occurs with proper settings. We recommend 90% quality for the best balance between file size and visual quality.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Can I convert multiple HEIC files at once?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Currently, you can convert one file at a time. For batch conversion, simply repeat the process for each image.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Why can't I open HEIC files on Windows/Android?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      HEIC is an Apple-specific format with limited support outside the Apple ecosystem. Converting to JPEG ensures your photos work everywhere.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      Does the converter work on mobile devices?
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Yes! Our tool is fully responsive and works perfectly on smartphones and tablets, making it easy to convert photos on any device.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Use Cases */}
+              <section className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  When You Need HEIC to JPEG Conversion
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📧 Email Attachments</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Many email clients don't support HEIC. Convert to JPEG for universal email compatibility.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🌐 Website Upload</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Most websites and CMS platforms require JPEG format for image uploads.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📱 Social Media</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Share iPhone photos on platforms that don't support HEIC natively.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🖨️ Printing Services</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Professional printing often requires JPEG format for best results.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">💼 Work Documents</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Insert photos into presentations, documents, and reports that need JPEG.</p>
+                  </div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔄 File Sharing</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Send photos to Android users or Windows computers without compatibility issues.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Related Tools */}
+              <section className="bg-white dark:bg-gray-800 rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                  Related Image Conversion Tools
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <a href="/png-to-jpeg" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🖼️</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">PNG to JPEG</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Convert PNG images to JPEG</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/image-to-webp" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🌐</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">Image to WebP</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Convert to modern WebP format</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/image-to-ico" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🔳</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">Image to ICO</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Create Windows icons</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/svg-to-png" className="block p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🎨</span>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 dark:text-white">SVG to PNG</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Convert vector to raster</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/tools" className="block p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">🔧</span>
+                      <div>
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-100">View All Tools</h3>
+                        <p className="text-sm text-blue-700 dark:text-blue-300">Explore our complete toolkit</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </section>
             </div>
           </div>
 
@@ -326,5 +559,6 @@ export default function HeicToJpegConverter() {
         <AdBanner slot={AD_SLOTS.TOOL_BOTTOM_BANNER} size="large" className="mt-12" />
       </div>
     </div>
+    </>
   );
 }
