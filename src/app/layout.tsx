@@ -51,6 +51,43 @@ export default function RootLayout({
               strategy="beforeInteractive"
               crossOrigin="anonymous"
             />
+            
+            {/* Ad Blocking Recovery */}
+            {AD_CONFIG.AD_BLOCKING_RECOVERY && (
+              <>
+                <Script
+                  src={`https://fundingchoicesmessages.google.com/i/${AD_CONFIG.PUBLISHER_ID}?ers=1`}
+                  strategy="beforeInteractive"
+                />
+                <Script id="ad-blocking-recovery" strategy="beforeInteractive">
+                  {`
+                    (function() {
+                      function signalGooglefcPresent() {
+                        if (!window.frames['googlefcPresent']) {
+                          if (document.body) {
+                            const iframe = document.createElement('iframe');
+                            iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1px; position: absolute;';
+                            iframe.name = 'googlefcPresent';
+                            document.body.appendChild(iframe);
+                          } else {
+                            setTimeout(signalGooglefcPresent, 0);
+                          }
+                        }
+                      }
+                      signalGooglefcPresent();
+                    })();
+                  `}
+                </Script>
+                
+                {/* Error Protection Message */}
+                <Script id="ad-error-protection" strategy="beforeInteractive">
+                  {`
+                    (function(){'use strict';function aa(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}var ba=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a}; function ca(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global]; for(var b=0;b<a.length;++b){var c=a[b];if(c&&c.Math==Math)return c}throw Error("Cannot find global object");}var da=ca(this);
+                  `}
+                </Script>
+              </>
+            )}
+
             {AD_CONFIG.AUTO_ADS && (
               <Script id="adsense-auto-ads" strategy="afterInteractive">
                 {`
