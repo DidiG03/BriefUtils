@@ -359,7 +359,7 @@ export default function JsonFormatter() {
                   <li>• Numbers don't need quotes unless they're strings</li>
                   <li>• Boolean values: true/false (lowercase, no quotes)</li>
                   <li>• Arrays use square brackets: [1, 2, 3]</li>
-                  <li>• Objects use curly braces: {"key": "value"}</li>
+                  <li>• Objects use curly braces: {`{"key": "value"}`}</li>
                   <li>• No trailing commas allowed in JSON</li>
                 </ul>
               </div>
@@ -573,7 +573,7 @@ export default function JsonFormatter() {
                   </div>
                   <div>
                     <span className="font-semibold text-yellow-600 dark:text-yellow-400">Object:</span>
-                    <span className="text-gray-600 dark:text-gray-400 ml-2">{"key": "value"}</span>
+                    <span className="text-gray-600 dark:text-gray-400 ml-2">{`{"key": "value"}`}</span>
                   </div>
                 </div>
               </div>

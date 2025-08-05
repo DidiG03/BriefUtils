@@ -99,6 +99,58 @@ export default function HeicToJpegConverter() {
     }
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HEIC to JPEG Converter",
+    "description": "Free online HEIC to JPEG converter. Convert Apple HEIC/HEIF images to JPEG format for universal compatibility. Works in your browser, no upload required.",
+    "url": "https://briefutils.com/heic-to-jpeg",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "permissions": "No permissions required",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Convert HEIC to JPEG",
+      "Privacy-focused - no uploads",
+      "Works offline",
+      "Adjustable quality settings",
+      "Universal compatibility"
+    ],
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is it safe to convert HEIC to JPEG online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Our converter processes everything locally in your browser. Your images never leave your device, ensuring complete privacy and security."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Will I lose image quality when converting HEIC to JPEG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Minimal quality loss occurs with proper settings. We recommend 90% quality for the best balance between file size and visual quality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't I open HEIC files on Windows/Android?",
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "HEIC is an Apple-specific format with limited support outside the Apple ecosystem. Converting to JPEG ensures your photos work everywhere."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <>
       <Script
