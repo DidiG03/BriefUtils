@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   creator: "BriefUtils",
   publisher: "BriefUtils",
   robots: "index, follow",
+  icons: {
+    icon: [
+      { url: '/fav.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/fav.ico', sizes: '16x16', type: 'image/x-icon' },
+    ],
+    shortcut: '/fav.ico',
+    apple: '/fav.ico',
+  },
   other: {
     "google-adsense-account": AD_CONFIG.PUBLISHER_ID,
   },
