@@ -12,6 +12,17 @@ export interface Tool {
 
 export const tools: Tool[] = [
   {
+    id: 'ai-text-summarizer',
+    name: 'AI Text Summarizer',
+    description: 'Create concise summaries of long articles, documents, and texts using AI. Perfect for research and quick reading.',
+    shortDescription: 'Summarize long texts with AI',
+    path: '/ai-text-summarizer',
+    icon: '🤖',
+    category: 'AI',
+    keywords: ['ai', 'summarizer', 'text', 'summary', 'artificial intelligence', 'document'],
+    featured: true,
+  },
+  {
     id: 'png-to-jpeg',
     name: 'PNG to JPEG Converter',
     description: 'Convert PNG images to JPEG format quickly and easily. Reduce file size while maintaining quality.',
@@ -114,6 +125,7 @@ export const tools: Tool[] = [
 
 export const categories = [
   { id: 'all', name: 'All Tools', count: tools.length },
+  { id: 'ai', name: 'AI Tools', count: tools.filter(tool => tool.category === 'AI').length },
   { id: 'image', name: 'Image', count: tools.filter(tool => tool.category === 'Image').length },
   { id: 'text', name: 'Text', count: tools.filter(tool => tool.category === 'Text').length },
   { id: 'developer', name: 'Developer', count: tools.filter(tool => tool.category === 'Developer').length },
