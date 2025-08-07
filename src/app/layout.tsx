@@ -18,10 +18,12 @@ export const metadata: Metadata = {
   robots: "index, follow",
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
       { url: '/fav.ico', sizes: '32x32', type: 'image/x-icon' },
       { url: '/fav.ico', sizes: '16x16', type: 'image/x-icon' },
     ],
-    shortcut: '/fav.ico',
+    shortcut: '/favicon.ico',
     apple: '/fav.ico',
   },
   other: {
