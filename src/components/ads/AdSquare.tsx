@@ -1,6 +1,7 @@
 'use client';
 
 import AdSense from './AdSense';
+import { useUser } from '@clerk/nextjs';
 
 interface AdSquareProps {
   slot: string;
@@ -9,6 +10,11 @@ interface AdSquareProps {
 }
 
 export default function AdSquare({ slot, className = '', size = 'medium' }: AdSquareProps) {
+  const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  const { user } = hasClerk ? (useUser() as any) : ({ user: null } as any);
+  const isPremium = Boolean(user?.publicMetadata?.isPremium);
+  if (isPremium) return null;
+
   const getSizeConfig = () => {
     switch (size) {
       case 'small':

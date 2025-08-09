@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { MagnifyingGlassIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
   return (
     <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50">
@@ -47,10 +49,30 @@ export default function Navbar() {
             >
               About
             </Link>
+            <Link
+              href="/premium"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
+            >
+              Premium
+            </Link>
           </div>
 
           {/* Right side */}
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            {hasClerk && (
+              <>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="hidden md:inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                      Sign in
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                  <UserButton userProfileUrl="/user" appearance={{ elements: { userButtonAvatarBox: 'w-8 h-8' } }} />
+                </SignedIn>
+              </>
+            )}
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -97,6 +119,22 @@ export default function Navbar() {
               >
                 About
               </Link>
+              <Link
+                href="/premium"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                onClick={() => setIsOpen(false)}
+              >
+                Premium
+              </Link>
+              {hasClerk && (
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700" onClick={() => setIsOpen(false)}>
+                      Sign in
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+              )}
             </div>
           </div>
         )}

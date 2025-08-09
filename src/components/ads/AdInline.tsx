@@ -1,6 +1,7 @@
 'use client';
 
 import AdSense from './AdSense';
+import { useUser } from '@clerk/nextjs';
 
 interface AdInlineProps {
   slot: string;
@@ -8,6 +9,11 @@ interface AdInlineProps {
 }
 
 export default function AdInline({ slot, className = '' }: AdInlineProps) {
+  const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  const { user } = hasClerk ? (useUser() as any) : ({ user: null } as any);
+  const isPremium = Boolean(user?.publicMetadata?.isPremium);
+  if (isPremium) return null;
+
   return (
     <div className={`ad-inline my-8 ${className}`}>
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6">

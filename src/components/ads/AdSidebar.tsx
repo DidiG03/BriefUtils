@@ -1,6 +1,7 @@
 'use client';
 
 import AdSense from './AdSense';
+import { useUser } from '@clerk/nextjs';
 
 interface AdSidebarProps {
   slot: string;
@@ -8,6 +9,11 @@ interface AdSidebarProps {
 }
 
 export default function AdSidebar({ slot, className = '' }: AdSidebarProps) {
+  const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  const { user } = hasClerk ? (useUser() as any) : ({ user: null } as any);
+  const isPremium = Boolean(user?.publicMetadata?.isPremium);
+  if (isPremium) return null;
+
   return (
     <div className={`ad-sidebar ${className}`}>
       <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 sticky top-20">

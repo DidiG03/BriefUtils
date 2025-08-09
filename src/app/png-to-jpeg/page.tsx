@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { ArrowDownTrayIcon, PhotoIcon } from '@heroicons/react/24/outline';
+import { usePopunder } from '@/hooks/usePopunder';
 import AdBanner from '@/components/ads/AdBanner';
 import AdSidebar from '@/components/ads/AdSidebar';
 import { AD_SLOTS } from '@/lib/ads';
@@ -14,6 +15,7 @@ export default function PngToJpegConverter() {
   const [isConverting, setIsConverting] = useState(false);
   const [quality, setQuality] = useState(0.9);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { triggerPopunder } = usePopunder();
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -84,6 +86,9 @@ export default function PngToJpegConverter() {
     link.download = selectedFile.name.replace('.png', '.jpg');
     link.href = convertedImageUrl;
     link.click();
+
+    // Attempt to open a compliant popunder window for free users
+    triggerPopunder();
   };
 
   const reset = () => {

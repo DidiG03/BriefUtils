@@ -60,6 +60,16 @@ export const shouldShowAds = (): boolean => {
     return false;
   }
   
+  // Hide ads for premium users if Clerk is available and flag is set
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const globalAny = window as any;
+    const clerkUser = globalAny.__clerk_user__ || null;
+    if (clerkUser && clerkUser.publicMetadata && clerkUser.publicMetadata.isPremium) {
+      return false;
+    }
+  } catch {}
+
   return AD_CONFIG.ENABLED;
 };
 
